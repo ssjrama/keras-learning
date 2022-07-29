@@ -6,14 +6,14 @@ import tensorflow as tf
 
 app = Flask(__name__)
 
-# Preload our diabetes model
-print('Loading diabetes model...')
-diabetes_graph = tf.compat.v1.get_default_graph()
+# Preload our rice model
+print('Loading rice model...')
+rice_graph = tf.compat.v1.get_default_graph()
 
 
-def predict_diabetes(features):
-    with diabetes_graph.as_default():
-        diabetes_model = load_model('./model/model.h5')
+def predict_rice(features):
+    with rice_graph.as_default():
+        rice_model = load_model('./model/model.h5')
 
         sample = {
             "Soil_Moisture": features[0],
@@ -24,18 +24,18 @@ def predict_diabetes(features):
 
         input_dict = {name: tf.convert_to_tensor(
             [value]) for name, value in sample.items()}
-        prediction = diabetes_model.predict(input_dict, steps=50)
+        prediction = rice_model.predict(input_dict, steps=50)
 
-        #prediction = diabetes_model.predict(np.array(features))
+        #prediction = rice_model.predict(np.array(features))
         print('prediction: ', prediction[0, 0])
         return np.float64(prediction[0, 0])
 
 
-@app.route('/diabetes/predict', methods=['POST'])
-def predict_diabetes_ctrl():
+@app.route('/rice/predict', methods=['POST'])
+def predict_rice_ctrl():
     features = request.get_json()['features']
     print(features[0])
-    return jsonify({'prediction': predict_diabetes(features)})
+    return jsonify({'prediction': predict_rice(features)})
 
 
 if __name__ == '__main__':

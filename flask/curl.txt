@@ -1,5 +1,5 @@
 curl -X POST \
-  http://localhost:5000/diabetes/predict \
+  http://localhost:5000/rice/predict \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -d '{
