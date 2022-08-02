@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from flask import Flask, jsonify, request
 from keras.models import load_model
 import json
@@ -44,4 +45,4 @@ def home_view():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=80)
