@@ -1,0 +1,17 @@
+curl -X POST \
+  http://localhost:5000/rice/predict \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"features": [50,30,70,20]
+}'
+
+curl -X POST \
+  https://smart-farm-api-sl.herokuapp.com/rice/predict \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"features": [50,30,70,20]
+}'
+
+mkvirtualenv --python=/usr/bin/python3.10.4 my-virtualenv
