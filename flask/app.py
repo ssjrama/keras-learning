@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from keras.models import load_model
 import json
 import numpy as np
 import tensorflow as tf
 
 app = Flask(__name__)
+CORS(app)
 
 # Preload our rice model
 print('Loading rice model...')
