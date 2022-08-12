@@ -2,7 +2,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from keras.models import load_model
-import json
 import numpy as np
 import tensorflow as tf
 
@@ -34,7 +33,7 @@ def predict_rice(features):
 
 
 def predict_fertilizer(features):
-    with rice_graph.as_default():
+    with fertilizer_graph.as_default():
         model = load_model('./model/model-f.h5')
 
         a2D = np.array(
